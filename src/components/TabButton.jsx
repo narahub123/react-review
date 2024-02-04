@@ -1,12 +1,8 @@
-export default function TabButton({ children }) {
-  function handleClick() {
-    console.log("Hello World");
-  }
-
+export default function TabButton({ children, onSelect }) {
+  console.log("TAB COMPONENT EXECUTING");
   return (
     <li>
-      {/* the value for onClick prop is a function */}
-      <button onClick={handleClick}>{children}</button>
+      <button onClick={onSelect}>{children}</button>
     </li>
   );
 }

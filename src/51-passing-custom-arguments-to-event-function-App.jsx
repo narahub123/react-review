@@ -1,19 +1,14 @@
-import { CORE_CONCEPTS } from "./data";
+import { CORE_CONCEPTS } from "./data.js";
 import Header from "./components/Header/Header.jsx";
 import CoreConcept from "./components/CoreConcept/CoreConcept.jsx";
 import TabButton from "./components/TabButton.jsx";
 
 function App() {
-  let tabContent = "Please click a button";
-
   function handleSelect(selectedButton) {
     // selectedButton => 'components', 'jsx', 'props', 'state'
-
-    tabContent = selectedButton;
-    console.log(tabContent);
+    console.log(selectedButton);
   }
 
-  console.log("APP COMPONENT EXECUTING");
   return (
     <div>
       <Header></Header>
@@ -42,7 +37,7 @@ function App() {
             <TabButton onSelect={() => handleSelect("props")}>Props</TabButton>
             <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
-          {tabContent}
+          Dynamic Content
         </section>
       </main>
     </div>
