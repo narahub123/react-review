@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 import Header from "../src/components/Header/Header.jsx";
-import CoreConcepts from "./components/CoreConcepts.jsx";
-import Examples from "./components/Examples.jsx";
+import CoreConcepts from "../src/components/CoreConcepts.jsx";
+import Examples from "../src/components/Examples.jsx";
 
 function App() {
   return (
