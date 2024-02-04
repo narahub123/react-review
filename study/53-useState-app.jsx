@@ -2,10 +2,10 @@ import { useState } from "react";
 // react hook must only be called inside of react component functions or
 // inside of other react hooks
 
-import { CORE_CONCEPTS } from "../src/data.js";
-import Header from "../src/components/Header/Header.jsx";
-import CoreConcept from "../src/components/CoreConcept/CoreConcept.jsx";
-import TabButton from "../src/components/TabButton.jsx";
+import { CORE_CONCEPTS } from "./data.js";
+import Header from "./components/Header/Header.jsx";
+import CoreConcept from "./components/CoreConcept/CoreConcept.jsx";
+import TabButton from "./components/TabButton.jsx";
 
 function App() {
   // let tabContent = "Please click a button";

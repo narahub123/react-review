@@ -1,14 +1,20 @@
-import { CORE_CONCEPTS } from "./data.js";
-import Header from "./components/Header/Header.jsx";
-import CoreConcept from "./components/CoreConcept/CoreConcept.jsx";
-import TabButton from "./components/TabButton.jsx";
+import { useState } from "react";
+
+import { CORE_CONCEPTS } from "../src/data.js";
+import Header from "../src/components/Header/Header.jsx";
+import CoreConcept from "../src/components/CoreConcept/CoreConcept.jsx";
+import TabButton from "../src/components/TabButton.jsx";
+import { EXAMPLES } from "../src/data.js";
 
 function App() {
+  const [selectedTopic, setSelectedTopic] = useState();
+
   function handleSelect(selectedButton) {
     // selectedButton => 'components', 'jsx', 'props', 'state'
-    console.log(selectedButton);
+    setSelectedTopic(selectedButton);
   }
 
+  console.log("APP COMPONENT EXECUTING");
   return (
     <div>
       <Header></Header>
@@ -37,7 +43,17 @@ function App() {
             <TabButton onSelect={() => handleSelect("props")}>Props</TabButton>
             <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
-          Dynamic Content
+          {/* {selectedTopic === null} <p>Pleas select a topic.</p> */}
+          {!selectedTopic ? <p>Pleas select a topic.</p> : null}
+          {selectedTopic ? (
+            <div id="tab-content">
+              <h3>{EXAMPLES[selectedTopic].title}</h3>
+              <p>{EXAMPLES[selectedTopic].description}</p>
+              <pre>
+                <code>{EXAMPLES[selectedTopic].code}</code>
+              </pre>
+            </div>
+          ) : null}
         </section>
       </main>
     </div>

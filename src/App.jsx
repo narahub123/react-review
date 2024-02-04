@@ -1,27 +1,17 @@
 import { useState } from "react";
-// react hook must only be called inside of react component functions or
-// inside of other react hooks
 
 import { CORE_CONCEPTS } from "./data";
 import Header from "./components/Header/Header.jsx";
 import CoreConcept from "./components/CoreConcept/CoreConcept.jsx";
 import TabButton from "./components/TabButton.jsx";
+import { EXAMPLES } from "./data";
 
 function App() {
-  // let tabContent = "Please click a button";
-  // const stateArray = useState("Please click a button"); // react hook function , must be called on the top level
-  const [selectedTopic, setSelectedTopic] = useState("Please click a button");
-  // useState(arguement); argument : default state
-  // useState() return a value which you can store in a variable or constant
-  // useState() yields an array with two elements
-  // first element of array : the current data snapshot for this component execution cycle
-  // second element of array : a function provided by react that can be executed to update this state
+  const [selectedTopic, setSelectedTopic] = useState();
+
   function handleSelect(selectedButton) {
     // selectedButton => 'components', 'jsx', 'props', 'state'
     setSelectedTopic(selectedButton);
-    // tabContent = selectedButton;
-    console.log(selectedTopic); // old state is shown bcos updated value will only be available
-    // after this app component function executed again
   }
 
   console.log("APP COMPONENT EXECUTING");
@@ -53,7 +43,16 @@ function App() {
             <TabButton onSelect={() => handleSelect("props")}>Props</TabButton>
             <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
-          {selectedTopic}
+          {!selectedTopic && <p>Pleas select a topic.</p>}
+          {selectedTopic && (
+            <div id="tab-content">
+              <h3>{EXAMPLES[selectedTopic].title}</h3>
+              <p>{EXAMPLES[selectedTopic].description}</p>
+              <pre>
+                <code>{EXAMPLES[selectedTopic].code}</code>
+              </pre>
+            </div>
+          )}
         </section>
       </main>
     </div>
