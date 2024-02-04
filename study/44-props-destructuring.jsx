@@ -1,6 +1,6 @@
 import reactImg from "./assets/react-core-concepts.png";
 // import core_concepts
-import { CORE_CONCEPTS } from "./data";
+import { CORE_CONCEPTS } from "../src/data";
 
 const reactDescription = ["Fundamental", "Crucial", "Core"];
 
