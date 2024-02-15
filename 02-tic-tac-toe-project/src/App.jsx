@@ -1,10 +1,10 @@
-import { useState, Fragment } from "react";
+import { useState } from 'react';
 
-import { CORE_CONCEPTS } from "../src/data.js";
-import Header from "../src/components/Header/Header.jsx";
-import CoreConcept from "../src/components/CoreConcept/CoreConcept.jsx";
-import TabButton from "../src/components/TabButton.jsx";
-import { EXAMPLES } from "../src/data.js";
+import { CORE_CONCEPTS } from './data.js';
+import Header from './components/Header/Header.jsx';
+import CoreConcept from './components/CoreConcept.jsx';
+import TabButton from './components/TabButton.jsx';
+import { EXAMPLES } from './data.js';
 
 function App() {
   const [selectedTopic, setSelectedTopic] = useState();
@@ -12,11 +12,12 @@ function App() {
   function handleSelect(selectedButton) {
     // selectedButton => 'components', 'jsx', 'props', 'state'
     setSelectedTopic(selectedButton);
+    // console.log(selectedTopic);
   }
 
-  console.log("APP COMPONENT EXECUTING");
+  console.log('APP COMPONENT EXECUTING');
 
-  let tabContent = <p>Pleas select a topic.</p>;
+  let tabContent = <p>Please select a topic.</p>;
 
   if (selectedTopic) {
     tabContent = (
@@ -31,8 +32,8 @@ function App() {
   }
 
   return (
-    <Fragment>
-      <Header></Header>
+    <div>
+      <Header />
       <main>
         <section id="core-concepts">
           <h2>Core Concepts</h2>
@@ -46,26 +47,26 @@ function App() {
           <h2>Examples</h2>
           <menu>
             <TabButton
-              isSelected={selectedTopic === "components"}
-              onSelect={() => handleSelect("components")}
+              isSelected={selectedTopic === 'components'}
+              onSelect={() => handleSelect('components')}
             >
               Components
             </TabButton>
             <TabButton
-              isSelected={selectedTopic === "jsx"}
-              onSelect={() => handleSelect("jsx")}
+              isSelected={selectedTopic === 'jsx'}
+              onSelect={() => handleSelect('jsx')}
             >
               JSX
             </TabButton>
             <TabButton
-              isSelected={selectedTopic === "props"}
-              onSelect={() => handleSelect("props")}
+              isSelected={selectedTopic === 'props'}
+              onSelect={() => handleSelect('props')}
             >
               Props
             </TabButton>
             <TabButton
-              isSelected={selectedTopic === "state"}
-              onSelect={() => handleSelect("state")}
+              isSelected={selectedTopic === 'state'}
+              onSelect={() => handleSelect('state')}
             >
               State
             </TabButton>
@@ -73,7 +74,7 @@ function App() {
           {tabContent}
         </section>
       </main>
-    </Fragment>
+    </div>
   );
 }
 
