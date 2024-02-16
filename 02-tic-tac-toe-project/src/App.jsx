@@ -16,8 +16,16 @@ function App() {
     <main>
       <div id="game-container">
         <ol id="players" className="highlight-player">
-          <Player initalName="Player 1" symbol="X" />
-          <Player initalName="Player 2" symbol="O" />
+          <Player
+            initalName="Player 1"
+            symbol="X"
+            isActive={activePlayer === "X"}
+          />
+          <Player
+            initalName="Player 2"
+            symbol="O"
+            isActive={activePlayer === "O"}
+          />
         </ol>
         <GameBoard
           onSelectSquare={handleSelectSquare} // change the symbol of the player to that of another player
