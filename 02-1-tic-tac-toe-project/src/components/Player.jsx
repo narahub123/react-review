@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-export default function Player({ initialName, symbol }) {
+export default function Player({
+  initialName,
+  symbol,
+  isActive,
+  onChangeName,
+}) {
   // deal with click text
   const [isEdit, setIsEidt] = useState(false);
   // deal with name editted - two way binding
@@ -16,6 +21,11 @@ export default function Player({ initialName, symbol }) {
     // update the state based on the old state
     // update player name element based on the change on the state
     setIsEidt((editing) => !editing);
+
+    // set a player name
+    if (isEdit) {
+      onChangeName(symbol, playerName);
+    }
   } // handleClick() ends
 
   // toggle player name element
@@ -30,8 +40,9 @@ export default function Player({ initialName, symbol }) {
     btnCaption = "Save";
   } // if ends
 
+  console.log(initialName, isActive);
   return (
-    <li>
+    <li className={isActive ? "active" : undefined}>
       <span className="player">
         {editablePlayerName}
         <span className="player-symbol">{symbol}</span>
