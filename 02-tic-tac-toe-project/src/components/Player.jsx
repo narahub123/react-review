@@ -10,7 +10,7 @@ export default function Player({ name, symbol, onClick }) {
   let playerName = <span className="player-name">{name}</span>;
 
   if (isEditing) {
-    playerName = <input type="text" required />;
+    playerName = <input type="text" value={name} required />;
   }
 
   return (
