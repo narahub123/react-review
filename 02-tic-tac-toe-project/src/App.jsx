@@ -3,13 +3,25 @@ import GameBoard from "./components/GameBoard";
 import { useState } from "react";
 
 function App() {
-  // check whether what the current player's symbol is
-  // verify who the current play is based on the symbol
+  const [gameTurns, setGameTurns] = useState([]);
   const [activePlayer, setActivePlayer] = useState("X");
 
-  // change the symbol of the player to another's
-  function handleSelectSquare() {
+  function handleSelectSquare(rowIndex, colIndex) {
     setActivePlayer((curActivePlayer) => (curActivePlayer === "X" ? "O" : "X"));
+    setGameTurns((prevTurns) => {
+      let currentPlayer = "X";
+
+      if (prevTurns.length > 0 && prevTurns[0].player === "X") {
+        currentPlayer = "O";
+      }
+
+      const updatedTurns = [
+        { square: { row: rowIndex, col: colIndex }, player: activePlayer },
+        ...prevTurns,
+      ];
+
+      return updatedTurns;
+    });
   }
 
   return (
@@ -28,8 +40,8 @@ function App() {
           />
         </ol>
         <GameBoard
-          onSelectSquare={handleSelectSquare} // change the symbol of the player to that of another player
-          activePlayerSymbol={activePlayer} // current player's symbol
+          onSelectSquare={handleSelectSquare}
+          activePlayerSymbol={activePlayer}
         />
       </div>
       log
