@@ -8,11 +8,9 @@ export default function Player({ name, symbol, onClick }) {
   }
 
   let playerName = <span className="player-name">{name}</span>;
-  let btnCaption = "Edit";
 
   if (isEditing) {
     playerName = <input type="text" required />;
-    btnCaption = "Save";
   }
 
   return (
@@ -21,7 +19,7 @@ export default function Player({ name, symbol, onClick }) {
         {playerName}
         <span className="player-symbol">{symbol}</span>
       </span>
-      <button onClick={handleChange}>{btnCaption}</button>
+      <button onClick={handleChange}>{isEditing ? "Save" : "Edit"}</button>
     </li>
   );
 }
