@@ -13,7 +13,7 @@ function EventItem({ event }) {
     }
   }
 
-  const token = useRouteLoaderData();
+  const token = useRouteLoaderData("root");
 
   return (
     <article className={classes.event}>
